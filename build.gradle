@@ -1,0 +1,47 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.1'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'ru.template'
+version = 'TEST_000_1909'
+sourceCompatibility = '18'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //authorization
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    //resize image
+    implementation 'net.coobird:thumbnailator:0.4.17'
+    //Return image on get request
+    implementation 'commons-io:commons-io:2.11.0'
+    //Transliterate
+    implementation 'com.ibm.icu:icu4j:71.1'
+    //Base64 decoder
+    implementation 'commons-codec:commons-codec:1.15'
+    //Spring web
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    //Validation
+    implementation'org.springframework.boot:spring-boot-starter-validation'
+    //DB connection
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'org.postgresql:postgresql'
+    //DB migration utils
+    implementation 'org.flywaydb:flyway-core'
+
+    // test DB
+    testImplementation group: 'org.hsqldb', name: 'hsqldb', version: '2.7.0'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
